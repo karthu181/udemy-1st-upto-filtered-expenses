@@ -1,5 +1,8 @@
 
 import Expenses from "./Components/Expenses/Expenses";
+import Counter from './Components/Counter/Counter'
+import NewExpense from "./Components/NewExpense/NewExpense";
+import { useState } from "react";
 
 const expenses = [
   {
@@ -23,11 +26,22 @@ const expenses = [
   },
 ];
 
+
+
 function App() {
+  const [expenseData, setExpenseData]=useState()
+  const addExpenseHandler=expense=>{
+  console.log(expenseData)
+  setExpenseData(expense)
+  
+
+}
+
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <Expenses expenses={expenses}/>
+      <NewExpense addExpenseHandler={addExpenseHandler}/>
+      <Expenses expenses={expenses}  />
+      <Counter/>
     </div>
   );
 }
